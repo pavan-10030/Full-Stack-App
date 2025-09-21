@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+    <style>
+        body {
+      background-color: rgb(5, 5, 46);
+      color: white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: bolder;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    table {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border: 1px solid rgb(135, 248, 36);
+    }
+
+    th {
+      background-color: rgb(20, 20, 70);
+      color: rgb(135, 248, 36);
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    button {
+      background-color: orangered;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: darkorange;
+      transform: scale(1.05);
+    }
+
+    form {
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      table {
+        font-size: 0.85rem;
+      }
+
+      th, td {
+        padding: 10px;
+      }
+
+      button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+      }
+    }
+    </style>
+</head>
+<body>
+    <h2>All users</h2>
+    <table>
+        <tr>
+            <!-- <th>Id</th> -->
+            <th>UserName</th>
+            <th>Email id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <%for(user of users){%>
+            <tr>
+                <!-- <td><%=user.id%></td> -->
+                <td><%=user.username%></td>
+                <td><%=user.email%></td>
+                <td>
+                    <form action="/users/<%=user.id%>/edit">
+                        <button>Edit</button>
+                    </form>
+                    
+                </td>
+                <td>
+                    <form method="get" action="/users/<%=user.id%>/delete">
+                        <button>Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <%}%>
+    </table>
+</body>
+</html>
